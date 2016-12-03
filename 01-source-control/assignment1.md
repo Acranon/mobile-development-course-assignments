@@ -5,3 +5,4 @@
 4. Push your changes to back to your GitHub repo.
 
 I am adding text to the bottom of assignment1.md
+Completed assignment
