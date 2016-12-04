@@ -39,6 +39,24 @@
 
              // start chessboard code
 
+            var str ="";
+            for (var i = 1; i <= 8; i++)
+            {
+             for (var ii = 1; ii <= 8; ii++)
+             {
+               if ((ii + i) % 2 == 0)
+               {
+                 str += "#";
+               }
+               else
+               {
+                 str += " ";
+               }
+             }
+             str += "\n";
+            }
+            console.log(str);
+
              // end chessboard code
           }
     </script>
