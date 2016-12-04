@@ -4,13 +4,53 @@
           function execute() {
              // Add triangle exercise code here
 
+              var num = "#";
+              while (num != "########") {
+               console.log(num);
+                num = num + "#";
+}
+
              // end triangle code
              
              // start fizzbuzz code
 
+             for (var i = 1; i <= 100; i++)
+             {
+               if (i % 3 == 0 && i % 5 == 0)
+               {
+                 console.log("FizzBuzz");
+               }
+               if (i % 3 == 0)
+               {
+                 console.log("fizz");
+               }
+               else if (i % 5 == 0)
+               {
+                 console.log("buzz");
+               }
+               else
+               {
+               console.log(i);
+               }
+             }
+
              // end fizzbuzz code
 
              // start chessboard code
+
+             str = "";
+             while (var i = 1; i <= 9; i++)
+               {
+                 if (i % 2 == 0)
+                 {
+                   str + "#";
+                 }
+                 else 
+                 {
+                   str + " ";
+                 }
+              }
+              console.log(str);
 
              // end chessboard code
           }
