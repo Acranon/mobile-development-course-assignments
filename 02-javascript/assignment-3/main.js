@@ -1,9 +1,24 @@
 function range(start, end) {
-    // your code here
+  var ar = [];
+  if (start < end){
+    for (i = start; i <= end; i++){
+        ar.push(i);
+    }
+  }
+  else{
+    for (j = start; j >= end; j--){
+      ar.push(j);
+    }
+  }
+  return ar;
 }
 
-function sum(array) {
-    // your sum function here
+function sum(array){
+  var g = 0;
+  for (i = array[0]; i <= array.length; i++){
+    g += i;
+  }
+  return g;
 }
 
 
