@@ -1,12 +1,21 @@
-function range(start, end) {
+function range(start, end, cnt) {
+  if (cnt === undefined){
+    cnt = 1;
+  }
   var ar = [];
   if (start < end){
-    for (i = start; i <= end; i++){
+    if (cnt < 1 ){
+      return "error: third option needs to be positive to count";
+    }
+    for (i = start; i <= end; i += cnt){
         ar.push(i);
     }
   }
   else{
-    for (j = start; j >= end; j--){
+    if (cnt > -1){
+      return "error: third option needs to be negative to count backwards";
+    }
+    for (j = start; j >= end; j += cnt){
       ar.push(j);
     }
   }
