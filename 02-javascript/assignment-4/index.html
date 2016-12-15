@@ -2,8 +2,38 @@
 <head>
   <script type="text/javascript">
           function execute() {
-            // Your code here.
-          }
+            var sean = {
+              name: "Sean",
+              height: "tall",
+              Density: "Very Dense",
+              IQ: 9001,
+              age: 31,
+              numOfFingers: 10,
+              rangeOfHearingMin: 20,
+              rangeOfHearingMax: 20000,
+              seanling: [
+                {
+                  name: "Seanling Alpha",
+                  height: "medium",
+                  bestSkill: "Juggling",
+                  age: 10,
+                  numOfTantrums: 210
+                }, {
+                  name: "Seanling Beta",
+                  height: "short",
+                  bestSkill: "running and screaming at the sametime",
+                  age: 3,
+                  numOfTantrum: 35
+                }
+              ],
+              celebrateBirthday: function() {
+                this.age += 1;
+                console.log("Congradulations! You have turned " + this.age + " years old!")
+              }
+            }
+          
+          
+          sean.celebrateBirthday();
     </script>
 </head>
 <body>
