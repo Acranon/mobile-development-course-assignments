@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <style>
@@ -9,5 +10,19 @@
   <script type="text/javascript" src="main.js" ></script>
 </head>
 <body>
+  <h3>Savings Rate Calculator</h3>
+  <p>
+  Starting amount: <input type="text" id="start" />
+  </p>
+  <p>
+    Rate of return (percent): <input type="text" id="percent" />
+  </p>
+  <p>
+    Years: <input type="text" id="years" />
+    <p>
+  <input type="button" value="Calculate" onclick="calc()" />
+  <input type="button" value="Reset" onclick="reset()" />
+  <p id="results_table">
+  </p>
 </body>
 </html>
