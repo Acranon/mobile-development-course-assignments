@@ -1,0 +1,13 @@
+var fib = [1, 1];
+var cnt = 1;
+function fibonacci(n) {
+ if (n < 2) {
+     return fib;
+ }
+ else {
+   fib.push(fib[cnt - 1] + fib[cnt]);
+   cnt++;
+   return fibonacci(n - 1);
+ }
+}
+console.log(fibonacci(10));
