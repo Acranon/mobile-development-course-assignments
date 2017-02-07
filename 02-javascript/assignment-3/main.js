@@ -1,9 +1,33 @@
-function range(start, end) {
-    // your code here
+function range(start, end, cnt) {
+  if (cnt === undefined){
+    cnt = 1;
+  }
+  var ar = [];
+  if (start < end){
+    if (cnt < 1 ){
+      return "error: third option needs to be positive to count";
+    }
+    for (i = start; i <= end; i += cnt){
+        ar.push(i);
+    }
+  }
+  else{
+    if (cnt > -1){
+      return "error: third option needs to be negative to count backwards";
+    }
+    for (j = start; j >= end; j += cnt){
+      ar.push(j);
+    }
+  }
+  return ar;
 }
 
-function sum(array) {
-    // your sum function here
+function sum(array){
+  var g = 0;
+  for (i = array[0]; i <= array.length; i++){
+    g += i;
+  }
+  return g;
 }
 
 

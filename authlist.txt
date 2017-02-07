@@ -1,0 +1,28 @@
+function authList(array) {
+  for (var i = 0; i < array.length; i++){
+    if (array[i].length < 6 || array[i].length > 10){
+      return false;
+    }
+    var cnt = 0;
+    for (var j = 0; j < array[i].length; j++){
+      var char = array[i].charCodeAt(j);
+      if (char >= 48 && char <= 57){
+        cnt++;
+      }
+    }
+    if (cnt === 0){
+      return false;
+    }
+    var cnt1 = 0;
+    for (j = 0; j < array[i].length; j++){
+      var char1 = array[i].charCodeAt(j);
+      if (char1 >= 97 && char1 <= 122){
+        cnt1++;
+      }
+    }
+    if (cnt1 === 0){
+      return false;
+    }
+    }
+  return true;
+  }

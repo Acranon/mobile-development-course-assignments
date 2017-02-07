@@ -4,14 +4,23 @@
           function execute() {
              // Add triangle exercise code here
 
+<<<<<<< HEAD
               var num = "#";
               while (num != "########") {
                console.log(num);
                 num = num + "#";
 }
+=======
+             var num = "#";
+             while (num != "########")
+             {
+               console.log(num);
+               num = num + "#";
+             }
+>>>>>>> 4cf28586ae7efee6ee4de8706409c75956ab8886
 
              // end triangle code
-             
+
              // start fizzbuzz code
 
              for (var i = 1; i <= 100; i++)
@@ -22,6 +31,7 @@
                }
                if (i % 3 == 0)
                {
+<<<<<<< HEAD
                  console.log("fizz");
                }
                else if (i % 5 == 0)
@@ -31,6 +41,17 @@
                else
                {
                console.log(i);
+=======
+                 console.log("Fizz");
+               }
+               else if (i % 5 == 0)
+               {
+                 console.log("Buzz");
+               }
+               else
+               {
+                 console.log(i);
+>>>>>>> 4cf28586ae7efee6ee4de8706409c75956ab8886
                }
              }
 
@@ -38,6 +59,7 @@
 
              // start chessboard code
 
+<<<<<<< HEAD
              str = "";
              while (var i = 1; i <= 9; i++)
                {
@@ -51,6 +73,26 @@
                  }
               }
               console.log(str);
+=======
+            var str ="";
+            var size = 8;
+            for (var i = 1; i <= size; i++)
+            {
+             for (var ii = 1; ii <= size; ii++)
+             {
+               if ((ii + i) % 2 == 0)
+               {
+                 str += "#";
+               }
+               else
+               {
+                 str += " ";
+               }
+             }
+             str += "\n";
+            }
+            console.log(str);
+>>>>>>> 4cf28586ae7efee6ee4de8706409c75956ab8886
 
              // end chessboard code
           }
