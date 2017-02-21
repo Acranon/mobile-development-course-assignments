@@ -26,6 +26,7 @@ export class StudentComponent {
         this.pointsPossible = 0;
         this.percent = 0;
         this.grade = 'N/A';
+        this.iGrade = 'N/A';
         this.assignmentList = [];
     }
 
@@ -37,10 +38,11 @@ export class StudentComponent {
             pointsScored: this.iScoredPoints,
             pointsPossible: this.iPossiblePoints,
             percent: this.iScoredPoints / this.iPossiblePoints,
-            iGrade: this.getIGrade()
+            iGrade: this.iGrade
         }
-        this.assignmentList.push(assignment);
         this.iPercent = assignment.percent;
+        assignment.iGrade = this.getIGrade();
+        this.assignmentList.push(assignment);
         this.updatePerformance();
     }
 
@@ -49,6 +51,10 @@ export class StudentComponent {
         this.pointsScored = this.assignmentList.reduce(this.addPointsScored, 0);
         this.percent = this.pointsScored / this.pointsPossible;
         this.grade = this.getGrade();
+    }
+
+    deleteAssignment(): void {
+
     }
 
 
