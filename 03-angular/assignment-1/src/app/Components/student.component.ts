@@ -53,8 +53,9 @@ export class StudentComponent {
         this.grade = this.getGrade();
     }
 
-    deleteAssignment(): void {
-
+    deleteAssignment(num: number): void {
+        this.assignmentList.splice(num, 1);
+        this.updatePerformance();
     }
 
 

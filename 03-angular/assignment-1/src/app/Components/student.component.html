@@ -22,12 +22,12 @@
 <h3>Assignments</h3>
 <table>
     <tr><th>Assignment Name</th><th>Points Scored</th><th>Points Possible</th><th>Percent</th><th>Grade</th></tr>
-    <tr *ngFor="let assignment of assignmentList">
+    <tr *ngFor="let assignment of assignmentList; let num = index">
         <td>{{ assignment.name }}</td>
         <td>{{ assignment.pointsScored }}</td>
         <td>{{ assignment.pointsPossible }}</td>
         <td>{{ assignment.percent | percent }}</td>
         <td>{{ assignment.iGrade }}</td>
-        <td><button type="submit" (click)="deleteAssignment()">X</button></td>
+        <td><button type="submit" (click)="deleteAssignment(num)">X</button></td>
     </tr>
 </table>
