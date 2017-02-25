@@ -42,7 +42,7 @@ export class StudentComponent {
         }
         this.iPercent = assignment.percent;
         assignment.iGrade = this.getIGrade();
-        this.assignmentList.push(assignment);
+        this.assignmentList.push(assignment); 
         this.updatePerformance();
     }
 
