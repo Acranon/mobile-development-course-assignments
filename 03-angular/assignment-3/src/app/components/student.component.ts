@@ -6,7 +6,7 @@ import { AssignmentService } from './assignment.service'
     moduleId: module.id,
     selector: 'student',
     templateUrl: 'student.component.html',
-    providers: [ AssignmentService ]
+    providers: [AssignmentService]
 })
 export class StudentComponent implements OnInit {
     id: number;
@@ -21,9 +21,9 @@ export class StudentComponent implements OnInit {
     iPossiblePoints: number;
     assignmentList: Assignment[];
     selectedAssignment: Assignment;
-    assignmentService: AssignmentService;
+    iGrade: string;
 
-    constructor() {
+    constructor(private assignmentService: AssignmentService) {
         this.studentName = "Bob Smith";
         this.studentEmail = "bobsmith@gmail.com"
         this.pointsScored = 0;
@@ -37,7 +37,8 @@ export class StudentComponent implements OnInit {
         this.populateAssignment();
     }
     populateAssignment(): void {
-        this.assignmentService.getAssignments().then(assignmentList => this.assignmentList = assignmentList);
+        this.assignmentService.getAssignments().then(assignments => this.assignmentList = assignments);
+        console.log(this.assignmentList);
         this.updatePerformance();
     }
 
@@ -53,9 +54,10 @@ export class StudentComponent implements OnInit {
             percent: assignmentPercent,
             iGrade: this.getGrade(assignmentPercent)
         }
-
-        this.assignmentList.push(assignment);
-        this.updatePerformance();
+        this.assignmentService.create(name = assignment.name, this.pointsScored = assignment.pointsScored, this.pointsPossible = assignment.pointsPossible, this.percent = assignment.percent, this.iGrade = assignment.iGrade)
+            .then(assignment => {
+                this.assignmentList.push(assignment);
+            })
     }
 
     deleteAssignment(assignment: Assignment): void {

@@ -20,8 +20,8 @@ export class AssignmentService {
                    .catch(this.handleError);
     }
 
-    create(name: string, scoredPoints: number, possiblePoints: number): Promise<Assignment> {
-        return this.http.post(this.assignmentUrl, JSON.stringify({name: name}), {headers:this.headers})
+    create(name: string, pointsScored: number, pointsPossible: number, percent: number, iGrade: string): Promise<Assignment> {
+        return this.http.post(this.assignmentUrl, JSON.stringify({name: name, pointsScored: pointsScored, pointsPossible: pointsPossible, percent: percent, iGrade: iGrade}), {headers:this.headers})
             .toPromise()
             .then(res => res.json().data)
     }
