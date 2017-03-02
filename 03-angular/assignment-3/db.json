@@ -1,0 +1,12 @@
+{
+    "assignments": [
+         {
+             "id": 0,
+            "name": "assignment1",
+            "pointsScored": 25,
+            "pointsPossible": 26,
+            "percent": 10,
+            "iGrade": "A"
+        }
+    ]
+}
