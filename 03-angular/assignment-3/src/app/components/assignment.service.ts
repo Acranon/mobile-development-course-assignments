@@ -1,41 +1,44 @@
-import { Injectable }           from '@angular/core';
-import { Headers, Http }        from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Headers, Http, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Assignment }     from './student.component';
+import { Assignment } from './assignment';
 
 @Injectable()
 
 export class AssignmentService {
-    private headers = new Headers({'Content-Type': 'application/json'});
-    private assignmentUrl = 'http://localhost:3000/assignments';
+    readonly url: string = 'http://localhost:3000/assignments';
 
     constructor(private http: Http) { }
 
-    getAssignments(): Promise<Assignment[]> {
-        return this.http.get(this.assignmentUrl)
-                   .toPromise()
-                   .then(response => response.json().data as Assignment[])
-                   .catch(this.handleError);
+
+    add(assignment: Assignment): Promise<any> {
+        let headers = new Headers({ 'Content-Type': 'application/json'});
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.url, assignment).toPromise();
     }
 
-    create(name: string, pointsScored: number, pointsPossible: number, percent: number, iGrade: string): Promise<Assignment> {
-        return this.http.post(this.assignmentUrl, JSON.stringify({name: name, pointsScored: pointsScored, pointsPossible: pointsPossible, percent: percent, iGrade: iGrade}), {headers:this.headers})
-            .toPromise()
-            .then(res => res.json().data)
+    delete(assignment: Assignment) {
+        let deleteUrl = `${this.url}/${assignment.id}`
+
+        return this.http.delete(deleteUrl).toPromise();
     }
 
-    delete(id: number): Promise<void> {
-        const url = `${this.assignmentUrl}/${id}`;
-        return this.http.delete(url, {headers:this.headers})
-                .toPromise()
-                .then(() => null)
-                .catch(this.handleError);
-    }
+    getAll(): Promise<Assignment[]> {
+        return this.http.get(this.url).toPromise().then(
+            response => {
+                let responseObj = response.json();
+                let responseArray: Assignment[]=[];
 
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
+                for (let assignment of responseObj) {
+                    responseArray.push(new Assignment(assignment.name, assignment.points, assignment.points_possible, assignment.id))
+                }
+
+                return responseArray;
+            }
+        )
+        .catch(error => console.log(error))
     }
 }

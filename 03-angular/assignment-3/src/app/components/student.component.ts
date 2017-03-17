@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Assignment } from './assignment';
 
-import { AssignmentService } from './assignment.service'
+import { AssignmentService } from './assignment.service';
 
 @Component({
     moduleId: module.id,
@@ -9,7 +10,6 @@ import { AssignmentService } from './assignment.service'
     providers: [AssignmentService]
 })
 export class StudentComponent implements OnInit {
-    id: number;
     studentName: string;
     studentEmail: string;
     pointsScored: number;
@@ -20,8 +20,6 @@ export class StudentComponent implements OnInit {
     iScoredPoints: number;
     iPossiblePoints: number;
     assignmentList: Assignment[];
-    selectedAssignment: Assignment;
-    iGrade: string;
 
     constructor(private assignmentService: AssignmentService) {
         this.studentName = "Bob Smith";
@@ -34,39 +32,28 @@ export class StudentComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.populateAssignment();
+        this.refresh();
     }
-    populateAssignment(): void {
-        this.assignmentService.getAssignments().then(assignments => this.assignmentList = assignments);
-        console.log(this.assignmentList);
+
+    refresh(): void {
+        this.assignmentService.getAll().then(assignments => { this.assignmentList = assignments; this.updatePerformance(); });
         this.updatePerformance();
     }
 
     addAssignment(name: string): void {
         let assignment: Assignment;
-        let assignmentPercent = this.iScoredPoints / this.iPossiblePoints;
 
-        assignment = {
-            id: this.id,
-            name: this.iName,
-            pointsScored: this.iScoredPoints,
-            pointsPossible: this.iPossiblePoints,
-            percent: assignmentPercent,
-            iGrade: this.getGrade(assignmentPercent)
-        }
-        this.assignmentService.create(name = assignment.name, this.pointsScored = assignment.pointsScored, this.pointsPossible = assignment.pointsPossible, this.percent = assignment.percent, this.iGrade = assignment.iGrade)
-            .then(assignment => {
-                this.assignmentList.push(assignment);
-            })
+        assignment = new Assignment(this.iName, this.iScoredPoints, this.iPossiblePoints);
+
+        this.assignmentService.add(assignment).then(
+            () => { this.refresh(); }
+        )
     }
 
     deleteAssignment(assignment: Assignment): void {
-        this.assignmentService
-            .delete(assignment.id)
-            .then(() => {
-                this.assignmentList = this.assignmentList.filter(h => h !== assignment)
-                if (this.selectedAssignment === assignment) { this.selectedAssignment = null; }
-            })
+        this.assignmentService.delete(assignment).then(
+            () => { this.refresh(); }
+        )
     }
 
     updatePerformance() {
@@ -98,19 +85,10 @@ export class StudentComponent implements OnInit {
     }
 
     private addPointsPossible(tally: number, assignment: Assignment) {
-        return tally + assignment.pointsPossible;
+        return tally + assignment.points_possible;
     }
 
     private addPointsScored(tally: number, assignment: Assignment) {
-        return tally + assignment.pointsScored;
+        return tally + assignment.points;
     }
-}
-
-export interface Assignment {
-    id: number;
-    name: string;
-    pointsScored: number;
-    pointsPossible: number;
-    percent: number;
-    iGrade: string;
 }

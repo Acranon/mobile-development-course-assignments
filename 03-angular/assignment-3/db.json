@@ -2,19 +2,15 @@
   "assignments": [
     {
       "id": 1,
-      "name": "assignment1",
-      "pointsScored": 26,
-      "pointsPossible": 26,
-      "percent": 1,
-      "iGrade": "A"
+      "name": "first assignment",
+      "points": 90,
+      "points_possible": 100
     },
     {
-      "name": "dsf",
-      "pointsScored": 23,
-      "pointsPossible": 23,
-      "percent": 1,
-      "iGrade": "A",
-      "id": 2
+      "id": 2,
+      "name": "second assignment",
+      "points": 95,
+      "points_possible": 100
     }
   ]
 }
